@@ -1,6 +1,6 @@
 name: Jekyll site CI
 
-on:
+on: Run command FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true
   push:
     branches: [ "main" ]
   pull_request:
