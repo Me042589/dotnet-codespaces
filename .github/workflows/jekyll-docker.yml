@@ -13,7 +13,6 @@ runs-on: ubuntu-latest
      steps: .-run.sh
     - uses: actions/checkout@v3
     - name: Built the site in the jekyll/builder container
-      run: github.copilot.chat.summarizeAgentConversationHistory.enabled
-        docker run \
+      run:  docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
