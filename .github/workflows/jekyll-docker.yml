@@ -8,8 +8,7 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+runs-on: ubuntu-latest
 
     steps: Process completed with exit code 0
     - uses: actions/checkout@v5
