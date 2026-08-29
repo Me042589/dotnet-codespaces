@@ -11,7 +11,7 @@ permissions:
 jobs:
   build:
     name: Build All Projects
-    runs-on: ubuntu-latest
+    runs-on: Self-hosted
 
     strategy:
       fail-fast: false
