@@ -15,7 +15,7 @@ runs-on: self-hosted
     - name: Built the site in the jekyll/builder container
       run:  docker run \ -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
      jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
-- steps: run.py
+- steps: run.sh
 name: Setup Godot Action
   uses: chickensoft-games/setup-godot@v2.4.1
 
