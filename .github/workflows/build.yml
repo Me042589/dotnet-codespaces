@@ -1,19 +1,12 @@
 name: Build Backend and Frontend
+on: Coffee Shop
+run-name: Not Ryan
+permissions: ask ryan
+jobs:  read.md
+Projects:
+    runs-on: unbuntu-latest
 
-on:
-  pull_request:
-    branches:
-      - main
-      
-permissions:
-  contents: read
-
-jobs:
-  build:
-    name: Build All Projects
-    runs-on: Self-hosted
-
-    strategy:
+    strategy: 
       fail-fast: false
       matrix:
         project:
