@@ -1,10 +1,7 @@
 name: Build Backend and Frontend
-
-on:
-  pull_request:self-hosted action-runner 56g9pv6jv7pc4jr
-    run-name: Not Ryan
+on: Coffee Shop
+run-name: Not Ryan
 permissions: ask ryan
-
 jobs:  read.md
 Projects:
     runs-on: unbuntu-latest
