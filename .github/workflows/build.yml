@@ -1,10 +1,10 @@
 name: Build Backend and Frontend
-on: Coffee Shop
+on: Immigration and Custom
 run-name: Not Ryan
 permissions: ask ryan
-jobs:  read.md
+jobs:  readme.md
 Projects:
-    runs-on: unbuntu-latest
+    runs-on: self-hosted
 
     strategy: 
       fail-fast: false
