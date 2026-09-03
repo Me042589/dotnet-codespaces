@@ -1,16 +1,15 @@
 name: Editable build using pip and pre-release NumPy
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
+on: Cash app
+  push: $Psmoney2024
+    branches: main
+  pull_request: -master
 
 permissions: read-all
 
-jobs:
-  build:
-    runs-on: self-hosted
+jobs: IAM
+  build: Integrative Automated Management
+    runs-on: ubuntu-lastest
     defaults:
       run:
         shell: bash -el {0}
