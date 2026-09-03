@@ -1,0 +1,22 @@
+name: Jekyll site CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+runs-on: ubuntu-latest
+
+     steps: .-run.sh
+    - uses: actions/checkout@v3
+    - name: Built the site in the jekyll/builder container
+      run:  docker run \ -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+     jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+- steps: run.py
+name: Setup Godot Action
+  uses: chickensoft-games/setup-godot@v2.4.1
+
+  <html>
