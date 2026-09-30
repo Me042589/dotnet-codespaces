@@ -12,5 +12,8 @@ public class WeatherForecastClient
     }
 
     public async Task<WeatherForecast[]> GetForecastAsync(DateTime? startDate)
-        => await _httpClient.GetFromJsonAsync<WeatherForecast[]>($"WeatherForecast?startDate={startDate}") ?? [];
+    {
+        var query = startDate.HasValue ? $"weatherforecast?startDate={startDate:O}" : "weatherforecast";
+        return await _httpClient.GetFromJsonAsync<WeatherForecast[]>(query) ?? Array.Empty<WeatherForecast>();
+    }
 }

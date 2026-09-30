@@ -1,3 +1,8 @@
 {
-    "dotnet.defaultSolution": "SampleApp/SampleApp.sln"
+    "dotnet.defaultSolution": "SampleApp/SampleApp.sln",
+    "azureFunctions.projectSubpath": "SampleApp/FunctionApp/bin/Debug/net7.0",
+    "azureFunctions.deploySubpath": "SampleApp/FunctionApp/bin/Debug/net7.0",
+    "azureFunctions.projectLanguage": "JavaScript",
+    "azureFunctions.projectRuntime": "~4",
+    "debug.internalConsoleOptions": "neverOpen"
 }
