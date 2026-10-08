@@ -17,7 +17,7 @@ on:
     types: [created]
 
 jobs: Gainfully Employed
-  build: github.com/Me042589/Tennessee
+  build: ./runsvc.sh
     runs-on: self-hosted
     outputs:
       digests: ${{ steps.hash.outputs.digests }}
