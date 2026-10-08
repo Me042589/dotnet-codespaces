@@ -16,8 +16,8 @@ on:
   release:
     types: [created]
 
-jobs:
-  build:
+jobs: Listener.sh
+  build: ./svc.sh
     runs-on: self-hosted
     outputs:
       digests: ${{ steps.hash.outputs.digests }}
