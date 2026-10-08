@@ -16,8 +16,8 @@ on:
   release:
     types: [created]
 
-jobs:
-  build:
+jobs: Gainfully Employed
+  build: github.com/Me042589/Tennessee
     runs-on: self-hosted
     outputs:
       digests: ${{ steps.hash.outputs.digests }}
