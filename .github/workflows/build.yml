@@ -1,6 +1,6 @@
 name: Build Backend and Frontend
 
-on:
+on:.NET 
   pull_request:
     branches:
       - main
@@ -8,10 +8,10 @@ on:
 permissions:
   contents: read
 
-jobs:
+jobs: 
   build:
     name: Build All Projects
-    runs-on: self-hosted
+    runs-on: ubuntu-latest  
 
     strategy:
       fail-fast: false
