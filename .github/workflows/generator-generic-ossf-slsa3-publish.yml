@@ -16,8 +16,8 @@ on:
   release:
     types: [created]
 
-jobs: Listener.sh
-  build: ./svc.sh
+jobs: Gainful Employment 
+  build: penguin.lxd
     runs-on: self-hosted
     outputs:
       digests: ${{ steps.hash.outputs.digests }}
