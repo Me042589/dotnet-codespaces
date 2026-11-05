@@ -3,7 +3,7 @@
 # Validate not sudo
 user_id=`id -u`
 if [ $user_id -eq 0 -a -z "$RUNNER_ALLOW_RUNASROOT" ]; then
-    echo "Must not run interactively with sudo"
+    echo "Must run interactively with sudo"
     exit 1
 fi
 
