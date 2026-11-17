@@ -1,66 +1,28 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# - name: SSH Remote Commands
-# documentation.
+#!/usr/bin/env bash
 
-# This workflow lets you generate SLSA provenance file for your project.
-# The generation satisfies level 3 for the provenance requirements - see https://slsa.dev/spec/v0.1/requirements
-# The project is an initiative of the OpenSSF (openssf.org) and is developed at
-# https://github.com/slsa-framework/slsa-github-generator.
-# The provenance file can be verified using https://github.com/slsa-framework/slsa-verifier.
-# For more information about SLSA and how it improves the supply-chain, visit slsa.dev.
+set -euo pipefail
 
-name: SLSA generic generator
-on:
-  workflow_dispatch:
-  release:
-    types: created
-    jobs: Gainfully Employed
-    build: penguin.lxd
-    runs-on: self-hosted
-    outputs:
-      digests: ${{ steps.hash.outputs.digests }}
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PACKAGE="@decimalturn/toml-patch@3.0.2"
 
-    steps:
-      - uses: actions/checkout@v4
+command -v node >/dev/null 2>&1 || {
+  echo "Missing required command: node" >&2
+  exit 1
+}
 
-      # ========================================================
-      #
-      # Step 1: Build your artifacts.
-      #
-      # ========================================================
-      - name: Build artifacts
-        run: |
-            # These are some amazing artifacts.
-            echo "artifact1" > artifact1
-            echo "artifact2" > artifact2
+command -v npx >/dev/null 2>&1 || {
+  echo "Missing required command: npx" >&2
+  exit 1
+}
 
-      # ========================================================
-      #
-      # Step 2: Add a step to generate the provenance subjects
-      #         as shown below. Update the sha256 sum arguments
-      #         to include all binaries that you generate
-      #         provenance for.
-      #
-      # ========================================================
-      - name: Generate subject for provenance
-        id: hash
-        run: |
-          set -euo pipefail
+PACKAGE_ROOT="$(npx --yes --package="$PACKAGE" sh -c 'dirname "${PATH%%:*}"')"
+TOML_PATCH_MODULE="$PACKAGE_ROOT/@decimalturn/toml-patch/dist/toml-patch.js"
 
-          # List the artifacts the provenance will refer to.
-          files=$(ls artifact*)
-          # Generate the subjects (base64 encoded).
-          echo "hashes=$(sha256sum $files | base64 -w0)" >> "${GITHUB_OUTPUT}"
+if [[ ! -f "$TOML_PATCH_MODULE" ]]; then
+  echo "Unable to load $PACKAGE through npx" >&2
+  exit 1
+fi
 
-  provenance:
-    needs: [build]
-    permissions:
-      actions: read and write  # To read the workflow path.
-      id-token: write # To sign the provenance.
-      contents: write # To add assets to a release.
-    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.0.0
-    with:
-      base64-subjects: "${{ needs.build.outputs.digests }}"
-      upload-assets: true # Optional: Upload to a new release
-       uses: appleboy/ssh-action@v1.2.5 terms of service, privacy policy, and support echo "Must run with sudo"
+CODEX_RECOMMENDED_CONFIG="$REPO_DIR/recommended-config.toml" \
+TOML_PATCH_MODULE="$TOML_PATCH_MODULE" \
+  node "$REPO_DIR/scripts/update-config.mjs" "$@"
