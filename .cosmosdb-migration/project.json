@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "name": "dotnet-codespaces",
+  "sourceCode": "parent",
+  "sessionId": "89797a8e-0118-48ab-bfbf-fdd78cb6c4a9",
+  "runCounts": {},
+  "phases": {
+    "discovery": {
+      "status": "in-progress",
+      "applicationAnalysis": {
+        "projectName": "FrontEnd,BackEnd,FunctionApp",
+        "projectType": "Web App, Microservice",
+        "language": "C#",
+        "frameworks": [
+          "ASP.NET Core",
+          "Azure Functions"
+        ],
+        "completedAt": "2026-10-18T11:22:30.861Z"
+      }
+    }
+  },
+  "consentGiven": true
+}
